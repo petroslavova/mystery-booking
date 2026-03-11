@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystery Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <span class="logo-text-small">MYSTERY</span>
+                <span class="logo-text-tiny">Booking</span>
+            </div>
+            <h2 class="site-title">MYSTERY BOOKING</h2>
+        </div>
+        <nav>
+            <a href="#" class="nav-btn">LOG IN</a>
+            <a href="#" class="nav-btn" id="nav-offers">OFFERS</a>
+            <a href="#" class="nav-btn" id="nav-home">HOME</a>
+        </nav>
+    </header>
+
+    <main id="home-page" class="page-view">
+        <div class="left-content">
+            <p class="intro-text">
+                Find your surprise.<br>
+                Fill the survey and we will decide where you should go.<br>
+                Let's begin the journey....
+            </p>
+            
+            <button id="book-btn" class="book-text">
+                BOOK<br>YOUR<br>EXPERIENCE
+            </button>
+        </div>
+
+        <div class="right-images">
+            <img src="https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?w=600" alt="Mountain">
+            <img src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=600" alt="City">
+            <img src="https://images.unsplash.com/photo-1521671413015-ce2b0103c8c7?w=600" alt="Air">
+        </div>
+    </main>
+
+    <div id="survey-modal" class="modal hidden">
+        <div class="modal-content expanded-modal">
+            <span class="close-btn">&times;</span>
+            <h2 class="form-title">Mystery booking</h2>
+            
+            <form id="mystery-survey">
+                <label for="name">Your name for the reservation:</label>
+                <input type="text" id="name" required>
+
+                <label for="preferences">Tell us about your preferences:</label>
+                <input type="text" id="preferences" placeholder="e.g. I love the ocean...">
+
+                <label for="budget">Your budget: <span id="budget-val" class="highlight-val">1000</span> BGN</label>
+                <input type="range" id="budget" name="budget" min="100" max="5000" step="50" value="1000">
+
+                <label>Type of experience:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="type" value="Extreme activity" required> Extreme activity</label>
+                    <label><input type="radio" name="type" value="Vacation"> Vacation</label>
+                    <label><input type="radio" name="type" value="A night out"> A night out</label>
+                    <label><input type="radio" name="type" value="A day out"> A day out</label>
+                </div>
+
+                <label>Season:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="season" value="Spring" required> Spring</label>
+                    <label><input type="radio" name="season" value="Summer"> Summer</label>
+                    <label><input type="radio" name="season" value="Autumn"> Autumn</label>
+                    <label><input type="radio" name="season" value="Winter"> Winter</label>
+                </div>
+
+                <label>Select dates:</label>
+                <div class="date-group">
+                    <input type="date" id="start-date" required>
+                    <span class="date-separator">-</span>
+                    <input type="date" id="end-date" required>
+                </div>
+
+                <label>Number of people: <span id="people-count" class="highlight-val" style="font-size: 16px;">1</span></label>
+                <div class="people-group" id="people-icons">
+                    <span class="person-icon active" data-val="1">👤</span>
+                    <span class="person-icon" data-val="2">👤</span>
+                    <span class="person-icon" data-val="3">👤</span>
+                    <span class="person-icon" data-val="4">👤</span>
+                    <span class="person-icon" data-val="5">👤</span>
+                    <span class="person-icon" data-val="6">👤+</span>
+                </div>
+                <input type="hidden" id="people" name="people" value="1">
+
+                <button type="submit" class="submit-btn">Find my surprise</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
