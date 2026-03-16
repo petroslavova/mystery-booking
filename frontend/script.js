@@ -51,7 +51,75 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. ИЗПРАЩАНЕ НА ФОРМАТА
+    // 4. ВЕРТИКАЛЕН СЛАЙДЕР ЗА ОФЕРТИ
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const upBtn = document.querySelector('.up-btn');
+    const downBtn = document.querySelector('.down-btn');
+    
+    let currentSlide = 0;
+    const slideCount = slides.length;
+
+    // Функция за показване на конкретен слайд
+    function showSlide(index) {
+        // Проверка за границите
+        if (index < 0) {
+            index = slideCount - 1;
+        } else if (index >= slideCount) {
+            index = 0;
+        }
+        
+        // Преместване на слайдера вертикално
+        slider.style.transform = `translateY(-${index * 100}%)`;
+        
+        // Актуализиране на активните точки
+        dots.forEach((dot, i) => {
+            if (i === index) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+        
+        currentSlide = index;
+    }
+
+    // Събитие за бутон нагоре
+    upBtn.addEventListener('click', () => {
+        showSlide(currentSlide - 1);
+    });
+
+    // Събитие за бутон надолу
+    downBtn.addEventListener('click', () => {
+        showSlide(currentSlide + 1);
+    });
+
+    // Събитие за точките за навигация
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
+
+    // Автоматично превъртане на всеки 5 секунди
+    let autoSlide = setInterval(() => {
+        showSlide(currentSlide + 1);
+    }, 5000);
+
+    // Спиране на автоматичното превъртане при задържане на мишката върху слайдера
+    slider.addEventListener('mouseenter', () => {
+        clearInterval(autoSlide);
+    });
+
+    // Възобновяване на автоматичното превъртане при излизане на мишката
+    slider.addEventListener('mouseleave', () => {
+        autoSlide = setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+    });
+
+    // 5. ИЗПРАЩАНЕ НА ФОРМАТА
     const form = document.getElementById('mystery-survey');
     
     form.addEventListener('submit', (e) => {
